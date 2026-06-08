@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Carbon Compass helps people understand, track, and reduce their personal carbon footprint."
+    />
+    <title>Carbon Compass</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-shell">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="brand" href="#overview" aria-label="Carbon Compass home">
+          <span class="brand-mark" aria-hidden="true">CC</span>
+          <span>Carbon Compass</span>
+        </a>
+        <div class="nav-links">
+          <a href="#calculator">Calculator</a>
+          <a href="#actions">Actions</a>
+          <a href="#insights">Insights</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="app-shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Personal carbon footprint awareness platform</p>
+            <h1>Carbon Compass</h1>
+            <p class="hero-lede">
+              Measure your everyday emissions, spot the habits that matter, and build a weekly reduction plan that feels realistic.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#calculator">Start assessment</a>
+              <a class="button ghost" href="#actions">View climate actions</a>
+            </div>
+          </div>
+          <div class="planet-panel" aria-label="Animated carbon footprint summary">
+            <div class="orbit-scene">
+              <div class="sun"></div>
+              <div class="planet">
+                <span class="continent c1"></span>
+                <span class="continent c2"></span>
+                <span class="continent c3"></span>
+              </div>
+              <span class="orbit orbit-one"></span>
+              <span class="orbit orbit-two"></span>
+              <span class="leaf leaf-one"></span>
+              <span class="leaf leaf-two"></span>
+            </div>
+            <div class="metric-strip">
+              <div>
+                <span id="hero-score">4.8</span>
+                <small>tCO2e / year</small>
+              </div>
+              <div>
+                <span id="hero-progress">18%</span>
+                <small>reduction potential</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-shell dashboard-grid" aria-label="Carbon dashboard">
+        <article class="summary-card">
+          <span class="card-icon" aria-hidden="true">01</span>
+          <h2>Your footprint snapshot</h2>
+          <p id="summary-text">Complete the calculator to generate a personalized footprint profile.</p>
+          <div class="score-row">
+            <strong id="total-score">4.8</strong>
+            <span>tCO2e per year</span>
+          </div>
+        </article>
+        <article class="summary-card">
+          <span class="card-icon" aria-hidden="true">02</span>
+          <h2>Top impact area</h2>
+          <p id="top-category">Transport is currently your largest estimated source.</p>
+          <div class="mini-bars" id="mini-bars" aria-hidden="true"></div>
+        </article>
+        <article class="summary-card">
+          <span class="card-icon" aria-hidden="true">03</span>
+          <h2>Weekly action plan</h2>
+          <p id="plan-summary">Pick actions below to see how much carbon you could avoid this year.</p>
+          <div class="score-row small">
+            <strong id="saved-score">0.00</strong>
+            <span>tCO2e saved</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="app-shell tool-grid" id="calculator">
+        <div class="section-heading">
+          <p class="eyebrow">Calculator</p>
+          <h2>Estimate your yearly footprint</h2>
+        </div>
+        <form class="calculator" id="calculator-form">
+          <label>
+            <span>Weekly car travel</span>
+            <output id="car-output" for="carKm">120 km</output>
+            <input id="carKm" name="carKm" type="range" min="0" max="700" value="120" step="10" />
+          </label>
+          <label>
+            <span>Flights per year</span>
+            <output id="flight-output" for="flights">2 trips</output>
+            <input id="flights" name="flights" type="range" min="0" max="20" value="2" step="1" />
+          </label>
+          <label>
+            <span>Electricity use</span>
+            <output id="electricity-output" for="electricity">220 kWh / month</output>
+            <input id="electricity" name="electricity" type="range" min="50" max="900" value="220" step="10" />
+          </label>
+          <label>
+            <span>Diet pattern</span>
+            <select id="diet" name="diet">
+              <option value="plant">Mostly plant-based</option>
+              <option value="mixed" selected>Mixed diet</option>
+              <option value="meat">Meat-heavy</option>
+            </select>
+          </label>
+          <label>
+            <span>Shopping intensity</span>
+            <select id="shopping" name="shopping">
+              <option value="low">Minimal / repair-first</option>
+              <option value="medium" selected>Average household</option>
+              <option value="high">Frequent purchases</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="chart-panel" aria-label="Emissions by category">
+          <canvas id="footprint-chart" width="720" height="460"></canvas>
+          <div class="legend" id="legend"></div>
+        </div>
+      </section>
+
+      <section class="actions-band" id="actions">
+        <div class="app-shell">
+          <div class="section-heading compact">
+            <p class="eyebrow">Action tracker</p>
+            <h2>Choose simple reductions</h2>
+          </div>
+          <div class="action-grid" id="action-grid"></div>
+        </div>
+      </section>
+
+      <section class="app-shell insights-grid" id="insights">
+        <div class="section-heading">
+          <p class="eyebrow">Personalized insights</p>
+          <h2>What to focus on first</h2>
+        </div>
+        <div class="insight-panel" id="insight-panel"></div>
+      </section>
+    </main>
+
+    <footer class="app-shell footer">
+      <p>Built for PromptWars Virtual Main Challenge 3.</p>
+      <a href="#overview">Back to top</a>
+    </footer>
+
+    <script src="carbon-model.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
