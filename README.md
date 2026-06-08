@@ -61,22 +61,7 @@ Run syntax checks:
 npm run check
 ```
 
-## Deploy
 
-This project can be deployed as a static site on GitHub Pages, Netlify, Vercel, or Cloudflare Pages.
-
-For GitHub Pages:
-
-1. Push this folder to a public GitHub repository.
-2. Open repository settings.
-3. Enable Pages from the main branch root.
-4. Use the generated public URL as the deployed link.
-
-## Submission Checklist
-
-- Public GitHub Repository Link: add your repository URL.
-- Deployed Link: add your hosted static site URL.
-- LinkedIn Post: publish and add your public build-journey post URL.
 
 ## Notes
 
